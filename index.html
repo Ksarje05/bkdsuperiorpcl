@@ -1,1066 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>BKD Superior | Paint, Cleaning & Lawncare – Tallahassee, FL</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet"/>
-<style>
-  :root {
-    --black: #0a0a0a;
-    --dark: #111111;
-    --card: #161616;
-    --border: #222222;
-    --blue: #1e90ff;
-    --blue-bright: #3db8ff;
-    --blue-dark: #0a5fa0;
-    --white: #ffffff;
-    --gray: #aaaaaa;
-    --light-gray: #eeeeee;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Barlow', sans-serif;
-    overflow-x: hidden;
-  }
-
-  /* ── TOPBAR ── */
-  .topbar {
-    background: var(--blue);
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .topbar a { color: var(--white); text-decoration: none; }
-  .topbar a:hover { text-decoration: underline; }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(10,10,10,0.97);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 70px;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
-  .nav-logo img {
-    height: 52px;
-    width: auto;
-    filter: drop-shadow(0 0 6px rgba(30,144,255,0.4));
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--gray);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-
-  .nav-cta {
-    background: var(--blue);
-    color: var(--white) !important;
-    padding: 10px 22px;
-    border-radius: 4px;
-    font-weight: 700 !important;
-    transition: background 0.2s, transform 0.1s !important;
-  }
-  .nav-cta:hover {
-    background: var(--blue-bright) !important;
-    color: var(--white) !important;
-    transform: translateY(-1px);
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--white);
-    transition: all 0.3s;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: var(--black);
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(30,144,255,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(30,144,255,0.05) 0%, transparent 60%);
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(30,144,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(30,144,255,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    width: 100%;
-  }
-
-  .hero-badge {
-    display: inline-block;
-    background: rgba(30,144,255,0.15);
-    border: 1px solid rgba(30,144,255,0.4);
-    color: var(--blue-bright);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 2px;
-    margin-bottom: 24px;
-  }
-
-  .hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(56px, 7vw, 96px);
-    line-height: 0.92;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
-  }
-  .hero h1 span { color: var(--blue); }
-
-  .hero-sub {
-    font-size: 18px;
-    color: var(--gray);
-    line-height: 1.6;
-    margin-bottom: 40px;
-    max-width: 480px;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--blue);
-    color: var(--white);
-    padding: 16px 36px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover {
-    background: var(--blue-bright);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(30,144,255,0.3);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--white);
-    padding: 16px 36px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 4px;
-    border: 1px solid rgba(255,255,255,0.25);
-    cursor: pointer;
-    transition: all 0.2s;
-    display: inline-block;
-  }
-  .btn-outline:hover {
-    border-color: var(--blue);
-    color: var(--blue);
-    transform: translateY(-2px);
-  }
-
-  .hero-logo-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .hero-logo-wrap img {
-    width: 100%;
-    max-width: 460px;
-    filter: drop-shadow(0 0 40px rgba(30,144,255,0.35));
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-
-  /* ── STATS BAR ── */
-  .stats-bar {
-    background: var(--card);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 32px 40px;
-  }
-  .stats-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    text-align: center;
-  }
-  .stat-item h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    color: var(--blue);
-    line-height: 1;
-  }
-  .stat-item p {
-    font-size: 13px;
-    color: var(--gray);
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  /* ── SECTION SHARED ── */
-  section { padding: 90px 40px; }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-
-  .section-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(38px, 5vw, 60px);
-    letter-spacing: 1px;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-  .section-title span { color: var(--blue); }
-  .section-desc {
-    color: var(--gray);
-    font-size: 17px;
-    line-height: 1.7;
-    max-width: 560px;
-    margin-bottom: 52px;
-  }
-
-  /* ── SERVICES ── */
-  #services { background: var(--dark); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .service-card {
-    background: var(--card);
-    padding: 40px 32px;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-    cursor: default;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--blue);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
-  }
-  .service-card:hover {
-    background: #1a1a1a;
-    border-color: rgba(30,144,255,0.3);
-    transform: translateY(-4px);
-  }
-  .service-card:hover::before { transform: scaleX(1); }
-
-  .service-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-    display: block;
-  }
-  .service-card h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    color: var(--white);
-  }
-  .service-card p {
-    color: var(--gray);
-    font-size: 15px;
-    line-height: 1.65;
-  }
-
-  .service-items {
-    list-style: none;
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .service-items li {
-    color: var(--gray);
-    font-size: 14px;
-    padding-left: 16px;
-    position: relative;
-  }
-  .service-items li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--blue);
-    font-size: 12px;
-  }
-
-  /* ── HOW IT WORKS ── */
-  #how-it-works { background: var(--black); }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-  }
-  .steps-grid::before {
-    content: '';
-    position: absolute;
-    top: 36px;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--blue), var(--blue), transparent);
-    opacity: 0.3;
-  }
-
-  .step-item {
-    text-align: center;
-    padding: 0 24px;
-    position: relative;
-  }
-  .step-number {
-    width: 72px;
-    height: 72px;
-    border: 2px solid var(--blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 24px;
-    background: var(--black);
-    position: relative;
-    z-index: 2;
-  }
-  .step-number span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: var(--blue);
-  }
-  .step-item h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
-  }
-  .step-item p {
-    color: var(--gray);
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  /* ── DEPOSIT CTA ── */
-  .deposit-section {
-    background: linear-gradient(135deg, #0d2a45 0%, #0a0a0a 50%, #0a1a2e 100%);
-    border-top: 1px solid rgba(30,144,255,0.2);
-    border-bottom: 1px solid rgba(30,144,255,0.2);
-    text-align: center;
-    padding: 90px 40px;
-  }
-  .deposit-section .section-title { margin-bottom: 12px; }
-  .deposit-section p {
-    color: var(--gray);
-    font-size: 18px;
-    max-width: 560px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
-  }
-  .deposit-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 80px;
-    color: var(--blue);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .deposit-label {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 36px;
-  }
-
-  /* ── CONTACT ── */
-  #contact { background: var(--dark); }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .contact-info { display: flex; flex-direction: column; gap: 28px; }
-
-  .contact-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  .contact-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(30,144,255,0.1);
-    border: 1px solid rgba(30,144,255,0.3);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .contact-item h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 4px;
-  }
-  .contact-item p, .contact-item a {
-    color: var(--white);
-    font-size: 16px;
-    text-decoration: none;
-    line-height: 1.5;
-  }
-  .contact-item a:hover { color: var(--blue); }
-
-  /* ── FORM ── */
-  .contact-form {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 40px;
-  }
-  .contact-form h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 28px;
-  }
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .form-group label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gray);
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--dark);
-    border: 1px solid var(--border);
-    color: var(--white);
-    padding: 12px 16px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    border-radius: 4px;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--blue);
-  }
-  .form-group select option { background: var(--dark); }
-  .form-group textarea { resize: vertical; min-height: 100px; }
-
-  .form-submit {
-    width: 100%;
-    margin-top: 8px;
-  }
-
-  .form-note {
-    font-size: 12px;
-    color: var(--gray);
-    text-align: center;
-    margin-top: 12px;
-    line-height: 1.5;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #080808;
-    border-top: 1px solid var(--border);
-    padding: 48px 40px 28px;
-  }
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 48px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 28px;
-  }
-  .footer-brand img {
-    height: 64px;
-    margin-bottom: 16px;
-    filter: drop-shadow(0 0 8px rgba(30,144,255,0.3));
-  }
-  .footer-brand p {
-    color: var(--gray);
-    font-size: 14px;
-    line-height: 1.7;
-    max-width: 280px;
-  }
-  .footer-col h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 16px;
-  }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col ul li a {
-    color: var(--gray);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-  }
-  .footer-col ul li a:hover { color: var(--white); }
-  .footer-col p { color: var(--gray); font-size: 14px; line-height: 1.8; }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .footer-bottom p { color: #555; font-size: 13px; }
-
-  /* ── MOBILE NAV ── */
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: rgba(10,10,10,0.98);
-    border-bottom: 1px solid var(--border);
-    padding: 24px 40px;
-    z-index: 999;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    color: var(--gray);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: var(--white); }
-
-  /* ── ANIMATIONS ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
-    .hero-content {
-      grid-template-columns: 1fr;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .hero-logo-wrap { order: -1; }
-    .hero-logo-wrap img { max-width: 280px; }
-    .hero-actions { justify-content: center; }
-    .hero-sub { margin: 0 auto 40px; }
-
-    .stats-inner { grid-template-columns: repeat(2, 1fr); }
-
-    section { padding: 60px 20px; }
-
-    .services-grid { grid-template-columns: 1fr; }
-
-    .steps-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-    .steps-grid::before { display: none; }
-
-    .contact-grid { grid-template-columns: 1fr; }
-
-    .form-row { grid-template-columns: 1fr; }
-
-    .footer-top { grid-template-columns: 1fr; gap: 32px; }
-    .footer-bottom { flex-direction: column; text-align: center; }
-
-    .deposit-price { font-size: 60px; }
-  }
-
-  @media (max-width: 480px) {
-    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 52px; }
-    .contact-form { padding: 24px 20px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKD Superior | Tallahassee Professional Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- TOPBAR -->
-<div class="topbar">
-  📞 Emergency / Same-Day Service Available — <a href="tel:4482139299">(448) 213-9299</a>
-</div>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <img src="image0.jpeg" alt="BKD Superior Logo"/>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#how-it-works">How It Works</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="YOUR_STRIPE_LINK_HERE" target="_blank" class="nav-cta">Book Estimate — $100</a></li>
-  </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#how-it-works" onclick="closeMenu()">How It Works</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="YOUR_STRIPE_LINK_HERE" target="_blank">Book Estimate — $100</a>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-badge">Tallahassee, FL — Serving All Surrounding Areas</div>
-      <h1>Superior Work.<br/><span>Every Time.</span></h1>
-      <p class="hero-sub">Professional painting, deep cleaning, and lawncare for residential and commercial properties. Prices based on your square footage — no surprises.</p>
-      <div class="hero-actions">
-        <a href="YOUR_STRIPE_LINK_HERE" target="_blank" class="btn-primary">Book Free Estimate — $100 Deposit</a>
-        <a href="tel:4482139299" class="btn-outline">Call Now</a>
-      </div>
+    <div class="top-bar">
+        <span>📞 EMERGENCY / SAME-DAY SERVICE: (448) 213-9299 | help@bkdsuperiorpcl.com</span>
     </div>
-    <div class="hero-logo-wrap">
-      <img src="image0.jpeg" alt="BKD Superior Paint, Cleaning & Lawncare"/>
-    </div>
-  </div>
-</section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item fade-up">
-      <h3>3</h3>
-      <p>Service Categories</p>
-    </div>
-    <div class="stat-item fade-up">
-      <h3>100%</h3>
-      <p>Satisfaction Focused</p>
-    </div>
-    <div class="stat-item fade-up">
-      <h3>365</h3>
-      <p>Days Available</p>
-    </div>
-    <div class="stat-item fade-up">
-      <h3>$100</h3>
-      <p>Locks In Your Estimate</p>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-inner">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Our <span>Services</span></h2>
-    <p class="section-desc">All pricing is based on square footage and job scope. Book a $100 estimate visit and we'll give you an exact quote on-site.</p>
-
-    <div class="services-grid">
-
-      <!-- Painting -->
-      <div class="service-card fade-up">
-        <span class="service-icon">🖌️</span>
-        <h3>Painting</h3>
-        <p>Residential and commercial paint jobs done right — interior, exterior, and everything in between.</p>
-        <ul class="service-items">
-          <li>Interior & exterior painting</li>
-          <li>Residential painting</li>
-          <li>Commercial painting</li>
-          <li>Doors & trims</li>
-          <li>Pressure washing</li>
-        </ul>
-      </div>
-
-      <!-- Cleaning -->
-      <div class="service-card fade-up">
-        <span class="service-icon">🧹</span>
-        <h3>Cleaning Services</h3>
-        <p>From routine vacuuming to full post-construction cleanouts — no job too big or too dirty.</p>
-        <ul class="service-items">
-          <li>Trash outs</li>
-          <li>Vacuuming</li>
-          <li>Turn over / rental cleaning</li>
-          <li>Event clean up</li>
-          <li>Post construction cleanup</li>
-        </ul>
-      </div>
-
-      <!-- Lawn -->
-      <div class="service-card fade-up">
-        <span class="service-icon">🌿</span>
-        <h3>Lawn Services</h3>
-        <p>Full-service lawn care and land clearing for residential and commercial properties of any size.</p>
-        <ul class="service-items">
-          <li>Trimming — trees & shrubs</li>
-          <li>Landscaping</li>
-          <li>Lawn mowing & edging</li>
-          <li>Land clearing</li>
-          <li>Leaf removal</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <div class="section-inner">
-    <div class="section-label">Simple Process</div>
-    <h2 class="section-title">How It <span>Works</span></h2>
-    <p class="section-desc">Getting started with BKD Superior is fast and straightforward.</p>
-
-    <div class="steps-grid">
-      <div class="step-item fade-up">
-        <div class="step-number"><span>1</span></div>
-        <h4>Book Your Estimate</h4>
-        <p>Pay the $100 deposit online to lock in your estimate visit. This secures your spot on the schedule.</p>
-      </div>
-      <div class="step-item fade-up">
-        <div class="step-number"><span>2</span></div>
-        <h4>We Come To You</h4>
-        <p>We visit your property, assess the scope of work, and give you an exact quote based on your square footage.</p>
-      </div>
-      <div class="step-item fade-up">
-        <div class="step-number"><span>3</span></div>
-        <h4>Approve & Schedule</h4>
-        <p>If you like the quote, we schedule your job. The $100 deposit goes toward your final balance.</p>
-      </div>
-      <div class="step-item fade-up">
-        <div class="step-number"><span>4</span></div>
-        <h4>Superior Results</h4>
-        <p>We show up, do the work right, and don't leave until you're satisfied.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPOSIT CTA -->
-<div class="deposit-section">
-  <div class="section-label">Ready To Get Started?</div>
-  <h2 class="section-title">Lock In Your <span>Estimate</span></h2>
-  <div class="deposit-price">$100</div>
-  <div class="deposit-label">Non-refundable deposit — applied to your final balance</div>
-  <p>Pay the deposit, we come out to your property, assess the job, and give you a full quote. No surprises, no obligations beyond the estimate fee.</p>
-  <a href="YOUR_STRIPE_LINK_HERE" target="_blank" class="btn-primary">Pay Deposit & Book Now</a>
-</div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">Contact <span>Us</span></h2>
-    <p class="section-desc">Call, email, or fill out the form below and we'll get back to you as soon as possible.</p>
-
-    <div class="contact-grid">
-      <div class="contact-info">
-
-        <div class="contact-item fade-up">
-          <div class="contact-icon">📞</div>
-          <div>
-            <h4>Phone</h4>
-            <a href="tel:4482139299">(448) 213-9299</a>
-          </div>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="BKD Superior Logo" class="main-logo">
         </div>
+        <nav>
+            <a href="#services">SERVICES</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://book.stripe.com/14A7sK0M0gIc9jf9hG77O01" class="book-btn">BOOK NOW</a>
+        </nav>
+    </header>
 
-        <div class="contact-item fade-up">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <h4>Email</h4>
-            <a href="/cdn-cgi/l/email-protection#e3818887cd90969386918a8c9193828a8d97808f86828da3848e828a8fcd808c8e"><span class="__cf_email__" data-cfemail="47252c236934323722352e283537262e2933242b22262907202a262e2b6924282a">[email&#160;protected]</span></a>
-          </div>
-        </div>
+    <section class="hero">
+        <h1>SERVICING THE TALLAHASSEE AREA</h1>
+    </section>
 
-        <div class="contact-item fade-up">
-          <div class="contact-icon">📍</div>
-          <div>
-            <h4>Service Area</h4>
-            <p>Tallahassee, FL & Surrounding Areas</p>
-          </div>
-        </div>
-
-        <div class="contact-item fade-up">
-          <div class="contact-icon">🕐</div>
-          <div>
-            <h4>Availability</h4>
-            <p>Available 7 days a week<br/>Call or text for scheduling</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- CONTACT FORM -->
-      <div class="contact-form fade-up">
-        <h3>Send Us A Message</h3>
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" name="first_name" placeholder="John" required/>
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our Professional Services</h2>
+        <div class="service-container">
+            <div class="service-col">
+                <h3>Painting</h3>
+                <ul>
+                    <li>Interior Painting</li>
+                    <li>Exterior Painting</li>
+                    <li>Residential Projects</li>
+                    <li>Commercial Contracts</li>
+                    <li>Door Refinishing</li>
+                    <li>Trim & Baseboard Work</li>
+                    <li>Pressure Washing</li>
+                    <li>Deck & Fence Staining</li>
+                    <li>Cabinet Painting</li>
+                    <li>Stucco & Siding Painting</li>
+                </ul>
             </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" name="last_name" placeholder="Smith" required/>
+            <div class="service-col">
+                <h3>Cleaning</h3>
+                <ul>
+                    <li>Full Trash Outs</li>
+                    <li>Industrial Vacuuming</li>
+                    <li>Rental Turn-Over Cleaning</li>
+                    <li>Event Setup & Cleanup</li>
+                    <li>Post-Construction Cleaning</li>
+                    <li>Deep Move-In/Move-Out</li>
+                    <li>Window Cleaning</li>
+                    <li>Gutter Cleaning</li>
+                    <li>Office Maintenance</li>
+                    <li>Floor Scrubbing & Polishing</li>
+                </ul>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="(850) 000-0000" required/>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="you@email.com" required/>
-          </div>
-          <div class="form-group">
-            <label>Service Needed</label>
-            <select name="service" required>
-              <option value="" disabled selected>Select a service...</option>
-              <option>Interior / Exterior Painting</option>
-              <option>Residential Painting</option>
-              <option>Commercial Painting</option>
-              <option>Doors & Trims</option>
-              <option>Pressure Washing</option>
-              <option>Trash Out / Deep Clean</option>
-              <option>Vacuuming</option>
-              <option>Turn Over / Rental Cleaning</option>
-              <option>Event Clean Up</option>
-              <option>Post Construction Cleanup</option>
-              <option>Lawn Mowing & Edging</option>
-              <option>Trimming — Trees & Shrubs</option>
-              <option>Landscaping</option>
-              <option>Land Clearing</option>
-              <option>Leaf Removal</option>
-              <option>Multiple Services</option>
-              <option>Not Sure — Need Advice</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Address / Location</label>
-            <input type="text" name="address" placeholder="123 Main St, Tallahassee FL" required/>
-          </div>
-          <div class="form-group">
-            <label>Tell Us More (Optional)</label>
-            <textarea name="message" placeholder="Describe your project, yard size, or any details that would help us..."></textarea>
-          </div>
-          <button type="submit" class="btn-primary form-submit">Send Message</button>
-          <p class="form-note">We typically respond within a few hours. To book an estimate now, use the button above to pay the $100 deposit.</p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="service-col">
+                <h3>Lawn Service</h3>
+                <ul>
+                    <li>Tree Trimming & Pruning</li>
+                    <li>Shrub & Bush Trimming</li>
+                    <li>Full Landscaping Design</li>
+                    <li>Professional Lawn Mowing</li>
+                    <li>Precision Edging</li>
+                    <li>Large Land Clearing</li>
+                    <li>Seasonal Leaf Removal</li>
+                    <li>Debris & Haul Removal</li>
+                    <li>Mulch & Pine Straw Install</li>
+                    <li>Sod Installation</li>
+                </ul>
+            </div>
+        </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="image0.jpeg" alt="BKD Superior"/>
-        <p>Professional painting, deep cleaning, and lawncare for homes and businesses across Tallahassee, FL and surrounding areas.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Interior & Exterior Painting</a></li>
-          <li><a href="#services">Residential & Commercial Painting</a></li>
-          <li><a href="#services">Pressure Washing</a></li>
-          <li><a href="#services">Trash Outs & Deep Cleaning</a></li>
-          <li><a href="#services">Lawn Mowing & Edging</a></li>
-          <li><a href="#services">Land Clearing & Landscaping</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>
-          <a href="tel:4482139299" style="color:var(--gray);text-decoration:none;">(448) 213-9299</a><br/>
-          <a href="/cdn-cgi/l/email-protection#36545d521845434653445f594446575f5842555a53575876515b575f5a1855595b" style="color:var(--gray);text-decoration:none;"><span class="__cf_email__" data-cfemail="bedcd5da90cdcbcedbccd7d1cccedfd7d0caddd2dbdfd0fed9d3dfd7d290ddd1d3">[email&#160;protected]</span></a><br/><br/>
-          Tallahassee, FL<br/>
-          & Surrounding Areas
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 BKD Superior Paint, Cleaning & Lawncare. All rights reserved.</p>
-      <p>Tallahassee, FL</p>
-    </div>
-  </div>
-</footer>
+        <div class="motto-box">
+            <h2>"Specializing in Superior Services"</h2>
+        </div>
+    </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Mobile menu toggle
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">The Superior Standard</h2>
+            <div class="about-content">
+                <p>BKD Superior is Tallahassee’s premier choice for high-quality property maintenance. We operate on a "Clean-Only" guarantee, ensuring that we never leave a job site until it is in better condition than when we arrived. From fresh coats of paint to large-scale land clearing, our crew delivers precision and reliability.</p>
+                <p>We serve a 50-mile radius around Tallahassee. To ensure dedicated attention to every project, we utilize a $100 non-refundable deposit system to book estimate walkthroughs. This amount is credited directly toward your final service total once the job is confirmed.</p>
+            </div>
+        </div>
+    </section>
 
-  // Fade-up on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Common Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item"><h4>How do I book?</h4><p>Fill out our form below or call directly. We'll schedule a professional walkthrough.</p></div>
+            <div class="faq-item"><h4>What is the deposit for?</h4><p>It secures your time slot and is fully credited toward your final invoice.</p></div>
+            <div class="faq-item"><h4>What is your service area?</h4><p>We cover Tallahassee and all surrounding areas within 50 miles.</p></div>
+            <div class="faq-item"><h4>Can I get a same-day quote?</h4><p>Depending on availability, we offer rapid same-day walkthroughs for urgent needs.</p></div>
+            <div class="faq-item"><h4>Do you handle commercial?</h4><p>Yes, we specialize in both high-end residential and commercial property care.</p></div>
+            <div class="faq-item"><h4>What is Clean-Only?</h4><p>Our guarantee that we leave the property in pristine, debris-free condition.</p></div>
+            <div class="faq-item"><h4>Do you provide the paint?</h4><p>Yes, we use premium grade paints and materials for all our projects.</p></div>
+            <div class="faq-item"><h4>How do I pay?</h4><p>We accept digital payments, major cards, and standard business checks.</p></div>
+            <div class="faq-item"><h4>Do you do large clearings?</h4><p>Yes, our lawn team is equipped for heavy land clearing and debris hauling.</p></div>
+            <div class="faq-item"><h4>Are pets a problem?</h4><p>We just ask that pets are secured while we work for their safety and ours.</p></div>
+        </div>
+    </section>
+
+    <section id="contact-form" class="modern-form-section">
+        <div class="glass-form-card">
+            <h2 class="form-title">Secure Your Estimate</h2>
+            <p class="form-subtitle">Enter your details and click below to pay the deposit and initiate booking.</p>
+            <form class="modern-booking-form">
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <input type="text" placeholder="Project Address" class="full-width" required>
+                <textarea placeholder="Describe your project needs (e.g. Painting, Cleaning, Yard)..." rows="4" class="full-width"></textarea>
+                
+                <a href="https://book.stripe.com/14A7sK0M0gIc9jf9hG77O01" class="neo-submit-btn-link">INITIATE BOOKING</a>
+            </form>
+            <div class="modern-contact-links">
+                <a href="tel:4482139299" class="pill-btn"><span>📞</span> CALL NOW</a>
+                <a href="mailto:help@bkdsuperiorpcl.com" class="pill-btn"><span>✉️</span> EMAIL US</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <img src="logo.png" alt="BKD Logo" class="footer-logo">
+                <p>Tallahassee, FL</p>
+                <p>(448) 213-9299</p>
+            </div>
+            <div class="footer-col">
+                <h3>CORE CAPABILITIES</h3>
+                <p>Advanced Painting Solutions</p>
+                <p>Precision Landscaping</p>
+                <p>Sanitized Cleaning Services</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 BKD Superior | Specializing in Superior Services</p>
+        </div>
+    </footer>
+</body>
+</html>
