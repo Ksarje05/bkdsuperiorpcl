@@ -1,73 +1,92 @@
+/* MODERN LOOK & FEEL 2026 */
 :root {
     --pro-blue: #004a99;
     --action-green: #2ecc71;
-    --dark-bg: #0a0a0a;
-    --oswald: 'Oswald', sans-serif;
+    --dark-bg: #0f172a;
+    --text-main: #1e293b;
+    --text-light: #64748b;
     --jakarta: 'Plus Jakarta Sans', sans-serif;
+    --oswald: 'Oswald', sans-serif;
 }
 
-body { font-family: var(--jakarta); margin: 0; padding: 0; scroll-behavior: smooth; background-color: #fff; }
+* { box-sizing: border-box; }
+body { font-family: var(--jakarta); margin: 0; padding: 0; scroll-behavior: smooth; color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-.top-bar { background: var(--pro-blue); color: white; text-align: center; padding: 12px; font-family: var(--oswald); font-weight: bold; font-size: 14px; }
+/* Top Bar */
+.top-bar { background: var(--pro-blue); color: white; text-align: center; padding: 12px; font-family: var(--oswald); font-weight: bold; font-size: 14px; letter-spacing: 0.5px; }
 
-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.main-logo { height: 65px; width: auto; }
+/* Header */
+header { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: rgba(255,255,255,0.98); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.main-logo { height: 60px; width: auto; }
 
-nav a { text-decoration: none; color: #111; margin-left: 25px; font-family: var(--oswald); font-weight: 700; font-size: 14px; }
-.book-btn { background: var(--action-green); color: white !important; padding: 10px 22px; border-radius: 50px; }
+nav { display: flex; align-items: center; gap: 25px; }
+.nav-links { display: flex; gap: 20px; }
+nav a { text-decoration: none; color: var(--text-main); font-family: var(--oswald); font-weight: 700; font-size: 14px; transition: color 0.3s; }
+nav a:hover { color: var(--pro-blue); }
 
-/* HERO SECTION - Uses your specific GitHub filename */
-.hero { 
-    height: 60vh; 
-    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('Tallahassee%20Skyline.png'); 
-    background-size: cover; 
-    background-position: center; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    color: white; 
+.book-btn { background: var(--action-green); color: white !important; padding: 10px 24px; border-radius: 8px; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2); }
+
+/* Hero Section */
+.hero { height: 65vh; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('tallahassee-skyline.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+.hero h1 { font-family: var(--oswald); font-size: clamp(32px, 6vw, 72px); margin-bottom: 10px; }
+.hero p { font-size: 20px; font-weight: 300; opacity: 0.9; }
+
+/* Services */
+.services-section { padding: 100px 5%; background: #ffffff; }
+.section-title { text-align: center; font-family: var(--oswald); font-size: 42px; margin-bottom: 10px; color: var(--pro-blue); }
+.section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 60px; font-size: 18px; }
+
+.service-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.service-col { background: #f8fafc; padding: 40px; border-radius: 20px; border: 1px solid #f1f5f9; transition: transform 0.3s; }
+.service-col:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.service-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.service-header .icon { font-size: 24px; }
+.service-col h3 { font-family: var(--oswald); font-size: 24px; margin: 0; color: var(--pro-blue); }
+.service-col ul { list-style: none; padding: 0; }
+.service-col li { padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-weight: 500; }
+
+.motto-box { text-align: center; margin-top: 80px; padding: 40px; background: rgba(0, 74, 153, 0.03); border-radius: 20px; }
+.motto-box h2 { font-family: var(--oswald); font-size: 32px; color: var(--pro-blue); font-style: italic; }
+
+/* About Section */
+.about-section { padding: 100px 10%; background: #f1f5f9; border-radius: 60px 60px 0 0; }
+.about-content { max-width: 850px; margin: 0 auto; font-size: 19px; color: #334155; }
+
+/* FAQ Section */
+.faq-section { padding: 100px 5%; background: #ffffff; }
+.faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.faq-item { padding: 30px; background: white; border: 1px solid #e2e8f0; border-radius: 16px; }
+.faq-item h4 { font-family: var(--jakarta); font-weight: 800; color: var(--pro-blue); margin-bottom: 10px; }
+
+/* Contact Form Section */
+.modern-form-section { padding: 100px 5%; background: #f8fafc; }
+.glass-form-card { background: white; padding: 50px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0, 74, 153, 0.08); max-width: 750px; margin: 0 auto; text-align: center; border: 1px solid #e2e8f0; }
+.form-title { font-family: var(--jakarta); font-weight: 800; font-size: 32px; margin-bottom: 10px; }
+.form-subtitle { color: var(--text-light); margin-bottom: 40px; }
+.input-group { display: flex; gap: 15px; margin-bottom: 15px; }
+.input-group input, .full-width, textarea { width: 100%; padding: 18px; border: 1px solid #e2e8f0; background: #f1f5f9; border-radius: 12px; font-family: var(--jakarta); }
+.neo-submit-btn-link { display: block; background: var(--pro-blue); color: white; text-decoration: none; padding: 20px; border-radius: 12px; font-weight: 800; margin-top: 25px; transition: 0.3s; box-shadow: 0 10px 20px rgba(0, 74, 153, 0.15); }
+.neo-submit-btn-link:hover { transform: translateY(-2px); background: #003d80; }
+
+.modern-contact-links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+.pill-btn { text-decoration: none; font-weight: 700; color: var(--pro-blue); border: 2px solid #e2e8f0; padding: 12px 30px; border-radius: 100px; font-size: 14px; }
+
+/* Footer */
+.modern-footer { background: var(--dark-bg); color: white; padding: 80px 8% 40px; }
+.footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 50px; }
+.footer-logo { height: 45px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+.footer-info p { margin: 5px 0; color: #94a3b8; }
+.footer-nav h3 { font-family: var(--oswald); color: var(--action-green); font-size: 14px; letter-spacing: 2px; }
+.footer-nav ul { list-style: none; padding: 0; color: #cbd5e1; }
+.footer-nav li { margin-bottom: 10px; }
+.footer-bottom { margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: #64748b; font-size: 13px; }
+
+/* Responsive Header Fix */
+@media (max-width: 768px) {
+    header { flex-direction: column; gap: 15px; text-align: center; }
+    .nav-links { display: none; } /* Hide text links on mobile to prevent smushing */
+    nav { width: 100%; }
+    .book-btn { width: 100%; text-align: center; }
+    .input-group { flex-direction: column; }
+    .footer-content { flex-direction: column; text-align: center; align-items: center; }
 }
-.hero h1 { font-family: var(--oswald); font-size: clamp(30px, 6vw, 70px); text-align: center; }
-
-.section-title { text-align: center; font-family: var(--oswald); font-size: 42px; margin: 80px 0 40px; }
-.service-container { display: flex; justify-content: space-between; gap: 30px; padding: 0 8%; flex-wrap: wrap; }
-.service-col { flex: 1; min-width: 300px; padding: 40px; background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); transition: 0.3s; }
-.service-col h3 { font-family: var(--oswald); color: var(--pro-blue); border-bottom: 3px solid var(--action-green); display: inline-block; }
-.service-col ul { list-style: none; padding: 0; margin-top: 20px; }
-.service-col li { padding: 10px 0; border-bottom: 1px solid #f8f8f8; font-weight: 500; }
-
-.motto-box { text-align: center; padding: 100px 5%; background: #fbfbfb; }
-.motto-box h2 { font-family: var(--oswald); font-size: 32px; font-style: italic; color: var(--pro-blue); opacity: 0.8; }
-
-.about-section { padding: 100px 10%; text-align: center; }
-.about-content { max-width: 900px; margin: 0 auto; font-size: 19px; line-height: 1.8; }
-
-.faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 8% 80px; }
-.faq-item { background: #fff; padding: 30px; border-radius: 15px; border: 1px solid #eee; }
-.faq-item h4 { font-family: var(--oswald); color: var(--pro-blue); }
-
-.modern-form-section { padding: 100px 8%; background: #f0f2f5; display: flex; justify-content: center; }
-.glass-form-card { background: #fff; padding: 60px; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); width: 100%; max-width: 800px; text-align: center; }
-.form-title { font-family: var(--oswald); font-size: 36px; }
-
-.modern-booking-form { display: flex; flex-direction: column; gap: 20px; }
-.input-group { display: flex; gap: 20px; }
-.input-group input, .full-width, textarea { padding: 18px; border: 2px solid #f0f0f0; border-radius: 12px; font-size: 16px; background: #fafafa; }
-
-.date-selection { text-align: left; margin-top: 10px; }
-.date-selection label { display: block; margin-bottom: 10px; font-weight: 600; }
-
-.neo-submit-btn-link { 
-    display: block; text-decoration: none; background: var(--dark-bg); color: white; padding: 20px; border-radius: 12px; font-family: var(--oswald); font-weight: 700; font-size: 18px; text-align: center; transition: 0.3s; 
-}
-.neo-submit-btn-link:hover { background: var(--action-green); transform: translateY(-3px); }
-
-.modern-contact-links { margin-top: 40px; display: flex; justify-content: center; gap: 15px; }
-.pill-btn { text-decoration: none; color: #111; border: 1px solid #ddd; padding: 14px 35px; border-radius: 50px; font-weight: 600; }
-
-footer { background: var(--dark-bg); color: white; padding: 80px 8% 30px; }
-.footer-main { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 50px; }
-.footer-logo { height: 50px; }
-.footer-bottom { text-align: center; padding-top: 30px; font-size: 13px; color: #555; }
-
-@media (max-width: 768px) { .input-group { flex-direction: column; } }
